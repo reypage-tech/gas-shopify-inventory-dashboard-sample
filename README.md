@@ -1,5 +1,11 @@
 # gas-shopify-inventory-dashboard-sample
 
+![Local Node test output: daily sales by store, inventory with low-stock flags, and the resulting alert emails](docs/local_test_output.png)
+
+Mock output from local Node tests with fictional data, not a live Shopify store.
+
+Turns per-store sales and low-stock checks that a multi-store retailer would otherwise pull by hand from Shopify into a scripted daily Sheets update and per-assignee low-stock emails.
+
 Google Apps Script sample for a fictional multi-store home goods retailer. It shows how Shopify Admin API responses can drive Google Sheets daily sales and inventory tabs, low-stock email alerts grouped by assignee, Google Form updates for store goals, and a lightweight HtmlService dashboard.
 
 All store names, people, email addresses, and JSON payloads are made up for demonstration. This repository does not contain Shopify access tokens or live shop domains. Functionality was verified with local Node tests that mock Google services and inject a replaceable fetch implementation; it has not been deployed to a live Apps Script project against a real Shopify store.
@@ -24,6 +30,8 @@ All store names, people, email addresses, and JSON payloads are made up for demo
 | `test/run.js` | Runs `test/logic_test.js` |
 | `test/logic_test.js` | Node tests for sync math, alerts, form parsing, fetch injection |
 | `test/sample_data.js` | Loads JSON fixtures |
+| `scripts/generate_docs_image.js` | Rebuilds `docs/local_test_output.png` from the current test output |
+| `docs/local_test_output.png` | Screenshot used at the top of this README |
 
 ## Shopify credentials (production use)
 
@@ -56,6 +64,8 @@ Tests cover:
 - Goal form answer parsing and threshold updates
 - Injected fetch implementation without network calls
 - Mocked `MailApp` for alert sends
+
+To regenerate the screenshot at the top of this README from the current test output, run `node scripts/generate_docs_image.js` (needs `google-chrome` for the headless screenshot).
 
 ## Sample data snapshot (2026-10-29)
 
