@@ -1,0 +1,22 @@
+{
+  "locations": [
+    {
+      "id": 7101001,
+      "name": "Riverlane Downtown (sample)",
+      "active": true,
+      "address1": "120 Market Street",
+      "city": "Columbus",
+      "province": "Ohio",
+      "country": "US"
+    },
+    {
+      "id": 7101002,
+      "name": "Riverlane Westside (sample)",
+      "active": true,
+      "address1": "88 Grove Avenue",
+      "city": "Columbus",
+      "province": "Ohio",
+      "country": "US"
+    }
+  ]
+}

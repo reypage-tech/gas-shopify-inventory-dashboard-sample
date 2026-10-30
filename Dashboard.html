@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+  <meta charset="utf-8">
+  <style>
+    body { font-family: Arial, sans-serif; margin: 16px; color: #1a1a1a; }
+    h1 { font-size: 1.25rem; margin-bottom: 4px; }
+    .meta { color: #555; font-size: 0.85rem; margin-bottom: 16px; }
+    table { border-collapse: collapse; width: 100%; margin-bottom: 20px; }
+    th, td { border: 1px solid #ccc; padding: 6px 8px; text-align: left; font-size: 0.9rem; }
+    th { background: #f3f4f6; }
+    .low { background: #fef2f2; color: #991b1b; font-weight: bold; }
+    .ok { color: #166534; }
+    button { padding: 8px 14px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h1><?= data.brandName ?></h1>
+  <p class="meta">Report date: <?= data.reportDate ?> · Last sync: <?= data.lastSync ?></p>
+
+  <h2>Daily sales by store</h2>
+  <table>
+    <tr><th>Store</th><th>Revenue</th><th>Orders</th><th>Revenue goal</th><th>Status</th></tr>
+    <? data.salesRows.forEach(function(row) { ?>
+      <tr>
+        <td><?= row.storeName ?></td>
+        <td>$<?= row.revenue.toFixed(2) ?></td>
+        <td><?= row.orderCount ?></td>
+        <td>$<?= row.revenueGoal.toFixed(2) ?></td>
+        <td class="<?= row.meetsGoal ? 'ok' : 'low' ?>"><?= row.meetsGoal ? 'On track' : 'Below goal' ?></td>
+      </tr>
+    <? }); ?>
+  </table>
+
+  <h2>Inventory (low stock highlighted)</h2>
+  <table>
+    <tr><th>Store</th><th>SKU</th><th>Product</th><th>Qty</th><th>Threshold</th><th>Assignee</th></tr>
+    <? data.inventoryRows.forEach(function(row) { ?>
+      <tr class="<?= row.isLow ? 'low' : '' ?>">
+        <td><?= row.storeName ?></td>
+        <td><?= row.sku ?></td>
+        <td><?= row.productTitle ?></td>
+        <td><?= row.qty ?></td>
+        <td><?= row.threshold ?></td>
+        <td><?= row.assigneeName ?></td>
+      </tr>
+    <? }); ?>
+  </table>
+
+  <button onclick="google.script.run.withSuccessHandler(function(){location.reload();}).runSyncFromMenu()">Refresh from Shopify</button>
+</body>
+</html>

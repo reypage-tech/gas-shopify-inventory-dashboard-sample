@@ -1,0 +1,46 @@
+{
+  "products": [
+    {
+      "id": 900001,
+      "title": "Waffle Kitchen Towel",
+      "variants": [
+        {
+          "id": 410001,
+          "product_id": 900001,
+          "sku": "RH-TOWEL-01",
+          "inventory_item_id": 510001,
+          "price": "18.00",
+          "title": "Default"
+        }
+      ]
+    },
+    {
+      "id": 900002,
+      "title": "Ceramic Mug 12oz",
+      "variants": [
+        {
+          "id": 410002,
+          "product_id": 900002,
+          "sku": "RH-MUG-12",
+          "inventory_item_id": 510002,
+          "price": "24.00",
+          "title": "Default"
+        }
+      ]
+    },
+    {
+      "id": 900003,
+      "title": "Scented Candle Tin",
+      "variants": [
+        {
+          "id": 410003,
+          "product_id": 900003,
+          "sku": "RH-CNDL-08",
+          "inventory_item_id": 510003,
+          "price": "32.00",
+          "title": "Default"
+        }
+      ]
+    }
+  ]
+}

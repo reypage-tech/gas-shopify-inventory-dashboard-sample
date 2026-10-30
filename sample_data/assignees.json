@@ -1,0 +1,7 @@
+{
+  "sku_assignees": [
+    { "sku": "RH-TOWEL-01", "assignee_name": "Alex (Ops West)", "assignee_email": "alex.ops.west@example.com" },
+    { "sku": "RH-MUG-12", "assignee_name": "Jordan (Ops Downtown)", "assignee_email": "jordan.ops.downtown@example.com" },
+    { "sku": "RH-CNDL-08", "assignee_name": "Sam (Merchandising)", "assignee_email": "sam.merch@example.com" }
+  ]
+}
