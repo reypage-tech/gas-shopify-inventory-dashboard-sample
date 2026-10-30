@@ -148,5 +148,20 @@ check('sendLowStockAlerts_ sends one email per assignee', () => {
   assert.ok(sent.every(m => m.subject.indexOf('Low stock') >= 0));
 });
 
+check('header-only or missing sheets do not stop the dashboard read', () => {
+  const sheet = (rows) => ({
+    getLastRow: () => rows.length,
+    getLastColumn: () => (rows[0] || []).length,
+    getRange: (r, c, n, w) => ({ getValues: () => { if (n < 1) throw new Error('bad range'); return rows.slice(r - 1, r - 1 + n); } })
+  });
+  assert.deepStrictEqual(g.sheetToRows_(null), []);
+  assert.deepStrictEqual(g.sheetToRows_(sheet([])), []);
+  assert.deepStrictEqual(g.sheetToRows_(sheet([['date', 'store', 'sales']])), []);
+  assert.strictEqual(g.sheetToRows_(sheet([['h'], ['a'], ['b']])).length, 2);
+  assert.deepStrictEqual(g.readGoalsFromSheet_(g.sheetToRows_(sheet([['store', 'goal']]))), g.readGoalsFromSheet_([]));
+  assert.ok(Array.isArray(g.readDailySalesForDashboard_([])));
+  assert.ok(Array.isArray(g.readInventoryForDashboard_([])));
+});
+
 console.log('All logic tests passed (' + passed + ' checks)');
 module.exports = { passed };
