@@ -4,8 +4,6 @@
 
 Replaces pulling per-store sales and low-stock checks from Shopify by hand with one scripted Sheets update and per-assignee low-stock emails.
 
-Turns per-store sales and low-stock checks that a multi-store retailer would otherwise pull by hand from Shopify into a scripted Sheets update and per-assignee low-stock emails.
-
 Google Apps Script sample for a fictional multi-store home goods retailer. It shows how Shopify Admin API responses can drive Google Sheets per-day sales and inventory tabs, low-stock email alerts grouped by assignee, Google Form updates for store goals, and a lightweight HtmlService dashboard.
 
 ## What it does
