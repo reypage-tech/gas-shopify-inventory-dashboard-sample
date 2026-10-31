@@ -73,4 +73,4 @@ For report date 2026-10-29 with default revenue goal 500 and low stock threshold
 
 MIT (same intent as sibling samples in this portfolio).
 
-Note: built and tested with fictional data and local mocks, with no Shopify access tokens or live shop domains in this repository, and not deployed to a live Apps Script project against a real Shopify store.
+Note: built and tested with fictional data and local mocks, with no Shopify access tokens or live shop domains in this repository, and not deployed to a live Apps Script project against a real Shopify store; expect to adjust triggers, domain access and Shopify pagination for a production catalog.
