@@ -1,19 +1,17 @@
 # gas-shopify-inventory-dashboard-sample
 
-![Local Node test output: daily sales by store, inventory with low-stock flags, and the resulting alert emails](docs/local_test_output.png)
+![Local Node test output: per-day sales by store, inventory with low-stock flags, and the resulting alert emails](docs/local_test_output.png)
 
-Mock output from local Node tests with fictional data, not a live Shopify store.
+Replaces pulling per-store sales and low-stock checks from Shopify by hand with one scripted Sheets update and per-assignee low-stock emails.
 
-Turns per-store sales and low-stock checks that a multi-store retailer would otherwise pull by hand from Shopify into a scripted daily Sheets update and per-assignee low-stock emails.
+Turns per-store sales and low-stock checks that a multi-store retailer would otherwise pull by hand from Shopify into a scripted Sheets update and per-assignee low-stock emails.
 
-Google Apps Script sample for a fictional multi-store home goods retailer. It shows how Shopify Admin API responses can drive Google Sheets daily sales and inventory tabs, low-stock email alerts grouped by assignee, Google Form updates for store goals, and a lightweight HtmlService dashboard.
-
-All store names, people, email addresses, and JSON payloads are made up for demonstration. This repository does not contain Shopify access tokens or live shop domains. Functionality was verified with local Node tests that mock Google services and inject a replaceable fetch implementation; it has not been deployed to a live Apps Script project against a real Shopify store.
+Google Apps Script sample for a fictional multi-store home goods retailer. It shows how Shopify Admin API responses can drive Google Sheets per-day sales and inventory tabs, low-stock email alerts grouped by assignee, Google Form updates for store goals, and a lightweight HtmlService dashboard.
 
 ## What it does
 
 1. Pulls orders, locations, products, and inventory levels in Shopify REST shape (via `UrlFetchApp` when credentials are set in Script properties, or via `setFetchImpl_` in tests).
-2. Writes per-store daily sales for the report date (revenue, order count, revenue goal comparison).
+2. Writes per-store per-day sales for the report date (revenue, order count, revenue goal comparison).
 3. Writes inventory rows with low-stock flags using per-store thresholds from the StoreGoals sheet.
 4. Sends one email per assignee listing their low-stock SKUs (mocked in Node tests).
 5. Accepts goal updates from a Google Form linked to `onGoalFormSubmit`.
@@ -49,8 +47,6 @@ For local tests, leave credentials unset and use `setFetchImpl_` to return the s
 3. Paste sample payloads through a one-off helper or connect real Shopify properties, then run `syncRetailData()` or use the spreadsheet custom menu if you add one.
 4. Deploy as web app to open the dashboard (`doGet`).
 
-Because this sample was checked locally only, expect to adjust triggers, domain access, and Shopify pagination for your production catalog size.
-
 ## Local tests
 
 ```sh
@@ -59,7 +55,7 @@ node test/run.js
 
 Tests cover:
 
-- Daily sales aggregation for a fixed report date and America/New_York local dates
+- Per-day sales aggregation for a fixed report date and America/New_York local dates
 - Low-stock detection and grouping by assignee email
 - Goal form answer parsing and threshold updates
 - Injected fetch implementation without network calls
@@ -78,3 +74,5 @@ For report date 2026-10-29 with default revenue goal 500 and low stock threshold
 ## License
 
 MIT (same intent as sibling samples in this portfolio).
+
+Note: built and tested with fictional data and local mocks, with no Shopify access tokens or live shop domains in this repository, and not deployed to a live Apps Script project against a real Shopify store.
